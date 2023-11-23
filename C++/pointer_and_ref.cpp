@@ -24,8 +24,7 @@ int main() {
     value = 10;
 
     // 通过引用传递
-    modifyWithReference(value);
-    std::cout << "After modifyWithReference: " << value << std::endl;
+    modifyWithReference: " << value << std::endl;
 
     return 0;
 }

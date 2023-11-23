@@ -1,0 +1,12 @@
+# CMakeLists.txt
+
+cmake_minimum_required(VERSION 3.12)
+
+project(MyProject)
+
+# 添加主程序的源代码
+add_executable(MainProgram src/main.cpp)
+
+# 添加测试程序的源代码和 Google Test 库
+add_executable(TestProgram test/main.cpp test/test_example.cpp)
+target_link_libraries(TestProgram gtest gtest_main)
