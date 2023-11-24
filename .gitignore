@@ -1,2 +1,3 @@
 ﻿C++/cmake-build-debug/
 C++/**/*.exe
+vcpkg/cmake-build-debug
