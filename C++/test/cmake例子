@@ -1,0 +1,17 @@
+# CMakeLists.txt
+
+cmake_minimum_required(VERSION 3.12)
+
+project(MyProject)
+
+# 添加主程序的源代码
+add_executable(MainProgram src/main.cpp)
+
+# 添加测试程序的源代码和 Google Test 库
+add_executable(TestProgram test/main.cpp test/test_example.cpp)
+target_link_libraries(TestProgram gtest gtest_main)
+
+# 使用 -DTEST_MODE 定义 TEST_MODE 宏
+target_compile_definitions(TestProgram PRIVATE -DTEST_MODE)
+
+在这个设置中，TestProgram 目标会使用 -DTEST_MODE 选项来定义 TEST_MODE 宏。在编译时，test/main.cpp 中的 #ifdef TEST_MODE 就会生效。在主程序的编译中，TEST_MODE 宏未定义，因此 #else 分支会生效。

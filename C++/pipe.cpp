@@ -6,8 +6,8 @@
 #include <queue>
 
 std::mutex mtx;
-std::condition_variable cv;
 std::queue<std::string> messages;
+std::condition_variable cv;
 
 // 写入消息的线程函数
 void writerThread() {
@@ -18,6 +18,7 @@ void writerThread() {
             messages.push("Message " + std::to_string(i));
         }
         cv.notify_one();  // 通知读取线程有新消息
+
         std::this_thread::sleep_for(std::chrono::seconds(1));  // 等待一秒钟
     }
 }
