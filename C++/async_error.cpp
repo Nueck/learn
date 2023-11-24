@@ -10,7 +10,12 @@
 int add(int a, int b) {
     std::cout << "Adding numbers asynchronously..." << std::endl;
     // 模拟一个耗时操作
-    std::this_thread::sleep_for(std::chrono::seconds(2));
+    std::string s = "hello";
+    for (auto &c: s) {
+        c = 'C';
+    }
+    std::cout << s << std::endl;
+//    std::this_thread::sleep_for(std::chrono::seconds(2));
     return a + b;
 }
 
@@ -22,13 +27,15 @@ int main() {
         // 在调用 get 之前执行其他任务
         std::cout << "Main thread doing other work..." << std::endl;
 
+
+        std::this_thread::sleep_for(std::chrono::seconds(4));
         // 模拟一个错误，导致异步任务失败
 //        throw std::runtime_error("Simulated error in main thread");
 
         // 获取异步任务的结果，这会捕获到在其他任务期间引发的异常
         int result = futureResult.get();
         std::cout << "Result: " << result << std::endl;
-    } catch (const std::exception& e) {
+    } catch (const std::exception &e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
