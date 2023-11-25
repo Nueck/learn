@@ -1,3 +1,4 @@
 ﻿C++/cmake-build-debug/
-C++/**/*.exe
+!C++/**/*.cpp
+!C++/**/*.json
 vcpkg/cmake-build-debug
